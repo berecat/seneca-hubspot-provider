@@ -40,6 +40,7 @@
     "node": ">=14"
   },
   "dependencies": {
+    "@hubspot/api-client": "^7.0.1",
     "trello": "rjrodger/trello#extend"
   },
   "peerDependencies": {
