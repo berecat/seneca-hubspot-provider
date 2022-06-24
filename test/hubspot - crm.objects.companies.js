@@ -46,11 +46,11 @@ async function load(client, id, {properties, propertiesWithHistory, associations
           const apiResponse = await client.crm.companies.basicApi.getById(id, properties, propertiesWithHistory, associations, archived, idProperty);
                 return apiResponse;
         } catch (e) {
-          let _e;
-          e.message === 'HTTP request failed'
-            ? _e = JSON.stringify(e.response, null, 2)
-            : _e = e;
-          throw _e;
+          if(e.message === 'HTTP request failed'){
+                throw JSON.stringify(e.response, null, 2);
+          }else{
+                throw e;
+          }
         }
 };
 
