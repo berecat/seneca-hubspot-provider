@@ -38,7 +38,7 @@ async function load(client, id, {properties, propertiesWithHistory, associations
 
 // examples
 
-list(hubspotClient, {properties: ['city', 'state', 'name', 'domain', 'type']}).then(console.log);
+list(hubspotClient, {properties: ['city', 'state', 'name', 'domain', 'type', 'industry']}).then(console.log);
 
 // load(hubspotClient, '', {properties: undefined, propertiesWithHistory: undefined, associations: undefined, archived: false, idProperty: undefined}).then(console.log); // complete example
 load(hubspotClient, '', {properties: ['state', 'city']}).then(console.log); // "extended properties" example
