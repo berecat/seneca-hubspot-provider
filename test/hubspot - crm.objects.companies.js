@@ -27,7 +27,7 @@ async function load(id){
 
 const hubspot = require('@hubspot/api-client');
 
-(async()=>{ // get
+(async()=>{ // get list
         const hubspotClient = new hubspot.Client({accessToken: ''});
         const [limit, after, properties, propertiesWithHistory, associations, archived] = [10, undefined, undefined, undefined, undefined, false];
         try {
