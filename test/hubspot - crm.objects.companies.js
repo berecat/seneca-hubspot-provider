@@ -4,14 +4,21 @@ const ACCESS_TOKEN = '';
 
 const hubspotClient = new hubspot.Client({ accessToken: ACCESS_TOKEN });
 
-async function list(){
+async function list(){ 
         const response = await hubspotClient.apiRequest({
-        method: 'get',
-        path: '/crm/v3/objects/companies/',
+                method: 'get',
+                path: '/crm/v3/objects/companies/',
         })
 
-        const json = await response.json()
-        console.log(json['results'])
+        return (await response.json()).results;
 }
+
+async function load(id){
+        let _list = await list();
+        for(let i of _list)
+                if(i.id === id)
+                        return i;
+}
+
 
 // list();
