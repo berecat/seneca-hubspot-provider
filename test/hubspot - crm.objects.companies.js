@@ -27,7 +27,7 @@ async function load(id){
 
 const hubspot = require('@hubspot/api-client');
 
-(async()=>{ // get list
+(async()=>{ // GET list
         const hubspotClient = new hubspot.Client({accessToken: ''});
         const [limit, after, properties, propertiesWithHistory, associations, archived] = [10, undefined, undefined, undefined, undefined, false];
         try {
@@ -39,5 +39,25 @@ const hubspot = require('@hubspot/api-client');
                 : console.error(e)
 }
 })
+
+const hubspot = require('@hubspot/api-client');
+
+const hubspotClient = new hubspot.Client({accessToken:""});
+
+async function load(client, id, {properties, propertiesWithHistory, associations, archived, idProperty}){
+        try {
+          const apiResponse = await client.crm.companies.basicApi.getById(id, properties, propertiesWithHistory, associations, archived, idProperty);
+                return apiResponse;
+        } catch (e) {
+          let _e;
+          e.message === 'HTTP request failed'
+            ? _e = JSON.stringify(e.response, null, 2)
+            : _e = e;
+          throw _e;
+        }
+};
+
+// load(hubspotClient, '', {properties: undefined, propertiesWithHistory: undefined, associations: undefined, archived: false, idProperty: undefined}).then(console.log); // complete example
+load(hubspotClient, '', {properties: ['state', 'city']}).then(console.log); // "extended properties" example
 
 */
