@@ -32,7 +32,7 @@ const hubspot = require('@hubspot/api-client');
         const [limit, after, properties, propertiesWithHistory, associations, archived] = [10, undefined, undefined, undefined, undefined, false];
         try {
           const apiResponse = await hubspotClient.crm.companies.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
-  console.log(apiResponse.results);
+          console.log(apiResponse.results); // apiResponse.results instanceof Array
         } catch (e) {
           e.message === 'HTTP request failed'
                 ? console.error(JSON.stringify(e.response, null, 2))
