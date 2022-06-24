@@ -17,15 +17,16 @@ async function list(client, {limit = 10, after, properties, propertiesWithHistor
         } catch (e) {
           if(e.message === 'HTTP request failed'){
                 throw JSON.stringify(e.response, null, 2);
-          }else
+          }else{
                 throw e;
+          }
         }
 }
 
 async function load(client, id, {properties, propertiesWithHistory, associations, archived, idProperty}){ // GET load
         try {
           const apiResponse = await client.crm.companies.basicApi.getById(id, properties, propertiesWithHistory, associations, archived, idProperty);
-                return apiResponse;
+          return apiResponse;
         } catch (e) {
           if(e.message === 'HTTP request failed'){
                 throw JSON.stringify(e.response, null, 2);
