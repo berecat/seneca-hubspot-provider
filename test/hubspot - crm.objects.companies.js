@@ -27,22 +27,19 @@ async function load(id){
 
 const hubspot = require('@hubspot/api-client');
 
-(async()=>{ // GET list
-        const hubspotClient = new hubspot.Client({accessToken: ''});
-        const [limit, after, properties, propertiesWithHistory, associations, archived] = [10, undefined, undefined, undefined, undefined, false];
-        try {
-          const apiResponse = await hubspotClient.crm.companies.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
-          console.log(apiResponse.results); // apiResponse.results instanceof Array
-        } catch (e) {
-          e.message === 'HTTP request failed'
-                ? console.error(JSON.stringify(e.response, null, 2))
-                : console.error(e)
-}
-})
-
-const hubspot = require('@hubspot/api-client');
-
 const hubspotClient = new hubspot.Client({accessToken:""});
+
+async function list(client, {limit = 10, after, properties, propertiesWithHistory, associations, archived}){ // GET list
+        try {
+          const apiResponse = await client.crm.companies.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
+          return apiResponse.results; // apiResponse.results instanceof Array
+        } catch (e) {
+          if(e.message === 'HTTP request failed'){
+                throw JSON.stringify(e.response, null, 2);
+          }else
+                throw e;
+        }
+}
 
 async function load(client, id, {properties, propertiesWithHistory, associations, archived, idProperty}){
         try {
@@ -56,6 +53,8 @@ async function load(client, id, {properties, propertiesWithHistory, associations
           throw _e;
         }
 };
+
+list(hubspotClient, {properties: ['type']}).then(console.log);
 
 // load(hubspotClient, '', {properties: undefined, propertiesWithHistory: undefined, associations: undefined, archived: false, idProperty: undefined}).then(console.log); // complete example
 load(hubspotClient, '', {properties: ['state', 'city']}).then(console.log); // "extended properties" example
