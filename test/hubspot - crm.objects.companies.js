@@ -10,7 +10,7 @@ function newClient({accessToken, apiKey}){
 
 // const hubspotClient = newClient({accessToken: ''});
 
-async function list(client, {limit = 10, after, properties, propertiesWithHistory, associations, archived}){ // GET list
+async function list(client, {limit = 10, after, properties, propertiesWithHistory, associations, archived}){ // GET - a list of companies
         try {
           const apiResponse = await client.crm.companies.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
           // return (JSON.stringify(apiResponse.results));
@@ -24,7 +24,7 @@ async function list(client, {limit = 10, after, properties, propertiesWithHistor
         }
 }
 
-async function load(client, id, {properties, propertiesWithHistory, associations, archived, idProperty}){ // GET load
+async function load(client, id, {properties, propertiesWithHistory, associations, archived, idProperty}){ // GET - load a company 
         try {
           const apiResponse = await client.crm.companies.basicApi.getById(id, properties, propertiesWithHistory, associations, archived, idProperty);
           return apiResponse;
@@ -37,7 +37,7 @@ async function load(client, id, {properties, propertiesWithHistory, associations
         }
 };
 
-async function edit_desc(client, id, {description, idProperty}){
+async function edit_desc(client, id, {description, idProperty}){ // PATCH - edit the description of a company
         const apiResponse = await client.crm.companies.basicApi.update(id, {properties: {description}}, idProperty);
         return 'success';
 };
