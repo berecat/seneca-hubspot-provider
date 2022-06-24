@@ -37,9 +37,14 @@ async function load(client, id, {properties, propertiesWithHistory, associations
         }
 };
 
+async function edit_desc(client, id, {description, idProperty}){
+        const apiResponse = await client.crm.companies.basicApi.update(id, {properties: {description}}, idProperty);
+        return 'success';
+};
+
 // examples
 
 list(hubspotClient, {properties: ['description', 'city', 'state', 'name', 'domain', 'type', 'industry']}).then(console.log);
-
+// edit_desc(hubspotClient, '', {description: "new desc"}).then(console.log);
 // load(hubspotClient, '', {properties: undefined, propertiesWithHistory: undefined, associations: undefined, archived: false, idProperty: undefined}).then(console.log); // complete example
 load(hubspotClient, '', {properties: ['state', 'city']}).then(console.log); // "extended properties" example
