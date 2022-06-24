@@ -36,6 +36,8 @@ async function load(client, id, {properties, propertiesWithHistory, associations
         }
 };
 
+// examples
+
 list(hubspotClient, {properties: ['type']}).then(console.log);
 
 // load(hubspotClient, '', {properties: undefined, propertiesWithHistory: undefined, associations: undefined, archived: false, idProperty: undefined}).then(console.log); // complete example
