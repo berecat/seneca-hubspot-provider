@@ -1,6 +1,14 @@
 const hubspot = require('@hubspot/api-client');
 
-const hubspotClient = new hubspot.Client({accessToken:''});
+function newClient({accessToken, apiKey}){
+        if(accessToken && apiKey)
+                throw "Specify only one method"; 
+        if(accessToken)
+                return new hubspot.Client({accessToken: accessToken});
+        return new hubspot.Client({apiKey: apiKey});
+}
+
+const hubspotClient = newClient({accessToken: ''});
 
 async function list(client, {limit = 10, after, properties, propertiesWithHistory, associations, archived}){ // GET list
         try {
