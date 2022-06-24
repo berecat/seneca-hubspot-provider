@@ -22,3 +22,22 @@ async function load(id){
 
 
 // list();
+
+/*
+
+const hubspot = require('@hubspot/api-client');
+
+(async()=>{ // get
+        const hubspotClient = new hubspot.Client({accessToken: ''});
+        const [limit, after, properties, propertiesWithHistory, associations, archived] = [10, undefined, undefined, undefined, undefined, false];
+        try {
+          const apiResponse = await hubspotClient.crm.companies.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
+  console.log(apiResponse.results);
+        } catch (e) {
+          e.message === 'HTTP request failed'
+                ? console.error(JSON.stringify(e.response, null, 2))
+                : console.error(e)
+}
+})
+
+*/
