@@ -8,7 +8,7 @@ function newClient({accessToken, apiKey}){
         return new hubspot.Client({apiKey: apiKey});
 }
 
-const hubspotClient = newClient({accessToken: ''});
+// const hubspotClient = newClient({accessToken: ''});
 
 async function list(client, {limit = 10, after, properties, propertiesWithHistory, associations, archived}){ // GET list
         try {
@@ -44,7 +44,7 @@ async function edit_desc(client, id, {description, idProperty}){
 
 // examples
 
-list(hubspotClient, {properties: ['description', 'city', 'state', 'name', 'domain', 'type', 'industry']}).then(console.log);
+// list(hubspotClient, {properties: ['description', 'city', 'state', 'name', 'domain', 'type', 'industry']}).then(console.log);
 // edit_desc(hubspotClient, '', {description: "new desc"}).then(console.log);
 // load(hubspotClient, '', {properties: undefined, propertiesWithHistory: undefined, associations: undefined, archived: false, idProperty: undefined}).then(console.log); // complete example
-load(hubspotClient, '', {properties: ['state', 'city']}).then(console.log); // "extended properties" example
+// load(hubspotClient, '', {properties: ['state', 'city']}).then(console.log); // "extended properties" example
