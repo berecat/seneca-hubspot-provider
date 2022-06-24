@@ -13,6 +13,7 @@ const hubspotClient = newClient({accessToken: ''});
 async function list(client, {limit = 10, after, properties, propertiesWithHistory, associations, archived}){ // GET list
         try {
           const apiResponse = await client.crm.companies.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
+          // return (JSON.stringify(apiResponse.results));
           return apiResponse.results; // apiResponse.results instanceof Array
         } catch (e) {
           if(e.message === 'HTTP request failed'){
