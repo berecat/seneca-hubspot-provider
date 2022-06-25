@@ -1,10 +1,10 @@
-![Seneca Trello-Provider](http://senecajs.org/files/assets/seneca-logo.png)
+![Seneca Hubspot-Provider](http://senecajs.org/files/assets/seneca-logo.png)
 
-> _Seneca Trello-Provider_ is a plugin for [Seneca](http://senecajs.org)
+> _Seneca Hubspot-Provider_ is a plugin for [Seneca](http://senecajs.org)
 
 
-Provides access to the Trello API using the Seneca *provider*
-convention. Trello API entities are represented as Seneca entities so
+Provides access to the Hubspot API using the Seneca *provider*
+convention. Hubspot API entities are represented as Seneca entities so
 that they can be accessed using the Seneca entity API and messages.
 
 
@@ -30,21 +30,21 @@ that they can be accessed using the Seneca entity API and messages.
 Seneca()
   .use('provider', {
     provider: {
-      trello: {
+      hubspot: {
         keys: {
-          api: {
-            value: '<SECRET>'
+          accessToken: {
+            value: ''
           },
         }
       }
     }
   })
-  .use('trello-provider')
+  .use('hubspot-provider')
 
-let repo = await seneca.entity('provider/trello/repo')
-  .load$('senecajs/trello-api-test')
+let repo = await seneca.entity('provider/hubspot/company')
+  .load$('id/type/name/city/state/description')
 
-Console.log('REPO DATA', repo)
+Console.log('COMPANY DATA', repo)
 
 repo.description = 'New description'
 repo = await repo.save$()
@@ -56,7 +56,7 @@ Console.log('UPDATED DATA', repo)
 ## Install
 
 ```sh
-$ npm install @seneca/trello-provider
+$ npm install @seneca/hubspot-provider
 ```
 
 
