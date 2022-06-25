@@ -36,39 +36,39 @@ function HubspotProvider(options) {
 		}
 	}
 	entityBuilder(this, {
-		  provider: {
-			  name: 'hubspot'
-		  },
-		  entity: {
-			  company: {
-				  cmd: {
-					  list: {
-						  action: async function(entize, msg) {
-							  let res = (await this.shared.sdk.crm.companies.basicApi.getPage(10, undefined, undefined, undefined, undefined, false)).results;
-							  let _list = res.map((data) => entize(data))
-							  return _list;
-						  }
-					  },
-					  load: {
-						  action: async function(entize, msg) {
-							  let data = (msg.q.id.split('/'));
-							  let id = data[0];
-							  data = data.slice(1);
-							  let obj = await load(this.shared.sdk, id, {properties: data.length != 0 ? data : undefined});
-							  return entize(obj);
-						  }
-					  },
-					  save: {
-						  action: async function(entize, msg) {
-							  let ent = msg.ent;
-							  let id = ent.id;
-							  let desc = ent.properties.description;
-							  await edit_desc(this.shared.sdk, id, {description: desc});
-						  }
+	  provider: {
+		  name: 'hubspot'
+	  },
+	  entity: {
+		  company: {
+			  cmd: {
+				  list: {
+					  action: async function(entize, msg) {
+						  let res = (await this.shared.sdk.crm.companies.basicApi.getPage(10, undefined, undefined, undefined, undefined, false)).results;
+						  let _list = res.map((data) => entize(data))
+						  return _list;
+					  }
+				  },
+				  load: {
+					  action: async function(entize, msg) {
+						  let data = (msg.q.id.split('/'));
+						  let id = data[0];
+						  data = data.slice(1);
+						  let obj = await load(this.shared.sdk, id, {properties: data.length != 0 ? data : undefined});
+						  return entize(obj);
+					  }
+				  },
+				  save: {
+					  action: async function(entize, msg) {
+						  let ent = msg.ent;
+						  let id = ent.id;
+						  let desc = ent.properties.description;
+						  await edit_desc(this.shared.sdk, id, {description: desc});
 					  }
 				  }
 			  }
 		  }
+	  }
 	  })
 
 
