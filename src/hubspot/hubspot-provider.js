@@ -88,7 +88,7 @@ function HubspotProvider(options) {
 
 	return{
 	 	exports: {
-		 	sdK: () => this.shared.sk
+		 	sdk: () => this.shared.sdk
 	 	}
 	}
 } 
