@@ -73,7 +73,7 @@ Set plugin options when loading with:
 ```js
 
 
-seneca.use('TrelloProvider', { name: value, ... })
+seneca.use('HubspotProvider', { name: value, ... })
 
 
 ```
