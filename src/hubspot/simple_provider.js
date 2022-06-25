@@ -1,5 +1,4 @@
 const Seneca = require('seneca');
-'pat-eu1-6eccc772-650a-4588-b617-27bbdd93187e'
 
 Seneca().quiet()
   .use('promisify')
@@ -9,7 +8,7 @@ Seneca().quiet()
       hubspot: {
         keys: {
           accessToken: {
-            value: 'pat-eu1-6eccc772-650a-4588-b617-27bbdd93187e'
+            value: ''
           },
         }
       }
@@ -25,7 +24,7 @@ Seneca().quiet()
     
     const list = await seneca.entity("provider/hubspot/company").list$()
     console.log(list)
-    const repo = await seneca.entity("provider/hubspot/company").load$('5808044262/type/name/city/state/description'); // customize properties you want to get from a given company e.g. "id/name/domain/description"
+    const repo = await seneca.entity("provider/hubspot/company").load$('id/type/name/city/state/description'); // customize properties you want to get from a given company e.g. "id/name/domain/description"
 
     // editing description examples
     // repo.properties.description = `Founded in ${repo.properties.city}...`
