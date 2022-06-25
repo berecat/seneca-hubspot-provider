@@ -46,7 +46,7 @@ let repo = await seneca.entity('provider/hubspot/company')
 
 Console.log('COMPANY DATA', repo)
 
-repo.description = 'New description'
+repo.properties.description = 'New description'
 repo = await repo.save$()
 
 Console.log('UPDATED DATA', repo)
