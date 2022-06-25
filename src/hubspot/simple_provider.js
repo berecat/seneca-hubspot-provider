@@ -28,6 +28,6 @@ Seneca().quiet()
 
     // editing description examples
     // repo.properties.description = `Founded in ${repo.properties.city}...`
-    // repo.save$();
+    // await repo.save$();
     console.log('REPO DATA: ', repo);
   });
