@@ -105,7 +105,7 @@ seneca.use('HubspotProvider', { name: value, ... })
 
 ### &laquo; `role:entity,base:hubspot,cmd:load,name:company,zone:provider` &raquo;
 
-Load Trello repository data into an entity.
+Load Hubspot company data into an entity.
 
 
 
