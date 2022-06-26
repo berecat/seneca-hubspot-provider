@@ -117,7 +117,7 @@ Update Trello repository data from an entity.
 
 
 ----------
-### &laquo; `sys:provider,get:info,provider:trello` &raquo;
+### &laquo; `sys:provider,get:info,provider:hubspot` &raquo;
 
 Get information about the provider.
 
