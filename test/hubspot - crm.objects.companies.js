@@ -38,8 +38,7 @@ async function load(client, id, {properties, propertiesWithHistory, associations
 };
 
 async function edit_desc(client, id, {description, idProperty}){ // PATCH - edit the description of a company
-        const apiResponse = await client.crm.companies.basicApi.update(id, {properties: {description}}, idProperty);
-        return 'success';
+        return await client.crm.companies.basicApi.update(id, {properties: {description}}, idProperty);
 };
 
 // examples
