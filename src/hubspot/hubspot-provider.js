@@ -14,8 +14,7 @@ async function load(client, id, {properties, propertiesWithHistory, associations
 };
 
 async function edit_desc(client, id, {description, idProperty}){ // PATCH - edit the description of a company
-        const apiResponse = await client.crm.companies.basicApi.update(id, {properties: {description}}, idProperty);
-        return 'success';
+        return await client.crm.companies.basicApi.update(id, {properties: {description}}, idProperty);
 };
 
 function HubspotProvider(options) {
@@ -63,7 +62,8 @@ function HubspotProvider(options) {
 							  let ent = msg.ent;
 							  let id = ent.id;
 							  let desc = ent.properties.description;
-							  await edit_desc(this.shared.sdk, id, {description: desc});
+							  let obj = await edit_desc(this.shared.sdk, id, {description: desc});
+							  return entize(obj);
 						  }
 					  }
 				  }
