@@ -92,7 +92,7 @@ seneca.use('HubspotProvider', { name: value, ... })
 ## Action Patterns
 
 * [role:entity,base:hubspot,cmd:load,name:company,zone:provider](#-roleentitybasehubspotcmdloadnamecompanyzoneprovider-)
-* [role:entity,base:trello,cmd:save,name:repo,zone:provider](#-roleentitybasehubspotcmdsavenamecompanyzoneprovider-)
+* [role:entity,base:hubspot,cmd:save,name:company,zone:provider](#-roleentitybasehubspotcmdsavenamecompanyzoneprovider-)
 * [sys:provider,get:info,provider:hubspot](#-sysprovidergetinfoproviderhubspot-)
 
 
