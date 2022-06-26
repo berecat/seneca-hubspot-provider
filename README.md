@@ -91,7 +91,7 @@ seneca.use('HubspotProvider', { name: value, ... })
 
 ## Action Patterns
 
-* [role:entity,base:trello,cmd:load,name:repo,zone:provider](#-roleentitybasetrellocmdloadnamerepozoneprovider-)
+* [role:entity,base:hubspot,cmd:load,name:company,zone:provider](#-roleentitybasehubspotcmdloadnamecompanyzoneprovider-)
 * [role:entity,base:trello,cmd:save,name:repo,zone:provider](#-roleentitybasetrellocmdsavenamerepozoneprovider-)
 * [sys:provider,get:info,provider:hubspot](#-sysprovidergetinfoproviderhubspot-)
 
@@ -103,7 +103,7 @@ seneca.use('HubspotProvider', { name: value, ... })
 
 ## Action Descriptions
 
-### &laquo; `role:entity,base:trello,cmd:load,name:repo,zone:provider` &raquo;
+### &laquo; `role:entity,base:hubspot,cmd:load,name:company,zone:provider` &raquo;
 
 Load Trello repository data into an entity.
 
