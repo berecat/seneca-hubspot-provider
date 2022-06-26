@@ -1,20 +1,20 @@
 {
-  "name": "@seneca/trello-provider",
+  "name": "@seneca/hubspot-provider",
   "version": "0.2.0",
-  "main": "dist/trello-provider.js",
+  "main": "dist/hubspot-provider.js",
   "type": "commonjs",
-  "types": "dist/trello-provider.d.ts",
-  "description": "Seneca entity provider for the Trello API.",
-  "homepage": "https://github.com/senecajs/seneca-trello-provider",
+  "types": "dist/hubspot-provider.d.ts",
+  "description": "Seneca entity provider for the Hubspot API.",
+  "homepage": "https://github.com/senecajs/seneca-hubspot-provider",
   "keywords": [
     "seneca",
-    "trello",
-    "trello-provider"
+    "hubspot",
+    "hubspot-provider"
   ],
   "author": "Richard Rodger - richardrodger.com",
   "repository": {
     "type": "git",
-    "url": "git://trello.com/senecajs/seneca-trello-provider.git"
+    "url": "git://hubspot.com/senecajs/seneca-hubspot-provider.git"
   },
   "scripts": {
     "test": "jest --coverage",
@@ -40,7 +40,6 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@hubspot/api-client": "^7.0.1",
     "trello": "rjrodger/trello#extend"
   },
   "peerDependencies": {
@@ -51,6 +50,7 @@
     "@seneca/env": ">=0.2"
   },
   "devDependencies": {
+    "@hubspot/api-client": "^7.0.1",
     "@seneca/doc": "^4.1.0",
     "@types/jest": "^28.1.3",
     "@types/node": "^18.0.0",
