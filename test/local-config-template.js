@@ -1,6 +1,6 @@
 module.exports = {
   company0: {
-    id: '<BOARD-ID>',
+    id: '<COMPANY-ID>',
   },
 }
 
