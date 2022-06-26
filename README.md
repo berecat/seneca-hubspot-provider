@@ -93,7 +93,7 @@ seneca.use('HubspotProvider', { name: value, ... })
 
 * [role:entity,base:trello,cmd:load,name:repo,zone:provider](#-roleentitybasetrellocmdloadnamerepozoneprovider-)
 * [role:entity,base:trello,cmd:save,name:repo,zone:provider](#-roleentitybasetrellocmdsavenamerepozoneprovider-)
-* [sys:provider,get:info,provider:trello](#-sysprovidergetinfoprovidertrello-)
+* [sys:provider,get:info,provider:hubspot](#-sysprovidergetinfoproviderhubspot-)
 
 
 <!--END:action-list-->
