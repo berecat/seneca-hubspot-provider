@@ -16,7 +16,7 @@
   "author": "Richard Rodger - richardrodger.com",
   "repository": {
     "type": "git",
-    "url": "git://hubspot.com/senecajs/seneca-hubspot-provider.git"
+    "url": "git://github.com/senecajs/seneca-hubspot-provider.git"
   },
   "scripts": {
     "test": "jest --coverage",
