@@ -13,7 +13,7 @@ function HubspotProvider(options) {
             name: 'hubspot',
             version: Pkg.version,
             sdk: {
-                name: 'hubspot-node',
+                name: 'hubspot',
                 version: Pkg.dependencies['hubspot'],
             }
         };
@@ -27,25 +27,18 @@ function HubspotProvider(options) {
                 cmd: {
                     list: {
                         action: async function (entize, msg) {
-				let res, list;
-				res = (await this.shared.sdk.crm.companies.basicApi.getPage(10)).results;
-				list = res.map((data) => entize(data))
+				const limit = msg.q.limit || 10;
+				let res = (await this.shared.sdk.crm.companies.basicApi.getPage(limit)).results;
+				let list = res.map((data) => entize(data))
 				return list;
                         }
                     },
                     load: {
                         action: async function (entize, msg) {
-				let data = (msg.q.id.split('/'));
-				let id = data[0];
-				let obj = {};
-				data = data.slice(1);
-				try{
-					obj = await this.shared.sdk.crm.companies.basicApi.getById(id, data.length != 0 ? data : undefined);
-				}catch(err){
-					if(err.code >= 400 && err.code < 500)
-						return null;
-					throw err;
-				}
+				let idParts = msg.q.id.split('/');
+				let id = idParts[0];
+				idParts = idParts.slice(1);
+				let obj = await this.shared.sdk.crm.companies.basicApi.getById(id, idParts.length != 0 ? idParts : undefined); // docs for the usage: https://developers.hubspot.com/docs/api/crm/companies
 				return entize(obj);
                         }
                     },
