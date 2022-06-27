@@ -28,9 +28,9 @@ that they can be accessed using the Seneca entity API and messages.
 // Setup - get the key value (<SECRET>) separately from a vault or
 // environment variable.
 Seneca()
-  .use('env', {
+  .use('env', { // the 'env' plugin enables you to use environment variables in your Seneca instance.
     // debug: true,
-    file: [__dirname + '/local-env.js;?'],
+    file: [__dirname + '/local-env.js;?'], // specify the file with your company's data such as id, etc.
     var: {
       $HUBSPOT_ACCESS_TOKEN: '<SECRET>',
     }
