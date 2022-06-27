@@ -30,7 +30,7 @@ that they can be accessed using the Seneca entity API and messages.
 Seneca()
   .use('env', { // the 'env' plugin enables you to use environment variables in your Seneca instance.
     // debug: true,
-    file: [__dirname + '/local-env.js;?'], // specify the file with your company's data such as id, etc.
+    file: [__dirname + '/local-env.js;?'], // you can specify the file with your company's data such as id, etc.
     var: {
       $HUBSPOT_ACCESS_TOKEN: '<SECRET>',
     }
