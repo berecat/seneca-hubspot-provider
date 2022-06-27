@@ -48,15 +48,15 @@ Seneca()
   })
   .use('hubspot-provider')
 
-let company = await seneca.entity('provider/hubspot/company')
+let companyId = await seneca.entity('provider/hubspot/company')
   .load$('id/type/name/city/state/description')
 
-Console.log('COMPANY DATA', company)
+Console.log('COMPANY DATA', companyId)
 
-company.properties.description = 'New description'
-company = await repo.save$()
+companyId.properties.description = 'New description'
+companyId = await companyId.save$()
 
-Console.log('UPDATED DATA', company)
+Console.log('UPDATED DATA', companyId)
 
 ```
 
