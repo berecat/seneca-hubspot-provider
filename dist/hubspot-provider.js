@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Pkg = require('../package.json');
-const hubspot = require('@hubspot/api-client');
+const Hubspot = require('@hubspot/api-client');
 
 function HubspotProvider(options) {
     const seneca = this;
@@ -67,7 +67,7 @@ function HubspotProvider(options) {
         if (!accTok.ok) {
             this.fail('api-key-missing');
         }
-        this.shared.sdk = new hubspot.Client({ accessToken: accTok.value });
+        this.shared.sdk = new Hubspot.Client({ accessToken: accTok.value });
     });
     return {
         exports: {
