@@ -31,17 +31,18 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
 				  cmd: {
 					  list: {
 						  action: async function(this: any, entize: any, msg: any) {
-							  let res = (await this.shared.sdk.crm.companies.basicApi.getPage(10)).results
+							  const limit = msg.q.limit || 10 // The maximum number of results to display per page
+							  let res = (await this.shared.sdk.crm.companies.basicApi.getPage(limit)).results
 							  let list = res.map((data) => entize(data))
 							  return list
 						  }
 					  },
 					  load: {
 						  action: async function(this: any, entize: any, msg: any) {
-							  let data = (msg.q.id.split('/'))
-							  let id = data[0]
-							  data = data.slice(1)
-						          let obj = await this.shared.sdk.crm.companies.basicApi.getById(id, data.length != 0 ? data : undefined)
+							  let idParts = msg.q.id.split('/')
+							  let id = idParts[0]
+							  idParts = idParts.slice(1)
+						          let obj = await this.shared.sdk.crm.companies.basicApi.getById(id, idParts.length != 0 ? idParts : undefined) // docs for the usage: https://developers.hubspot.com/docs/api/crm/companies
 							  return entize(obj)
 						  }
 					  },
