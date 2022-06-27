@@ -1,5 +1,7 @@
 const Pkg = require('../package.json');
+
 const Hubspot = require('@hubspot/api-client')
+
 
 type HubspotProviderOptions = {}
 
