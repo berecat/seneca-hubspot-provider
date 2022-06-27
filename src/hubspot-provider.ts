@@ -17,7 +17,7 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
 			name: 'hubspot',
 			version: Pkg.version,
 			sdk: {
-				name: 'hubspot-node',
+				name: 'hubspot',
 				version: Pkg.dependencies['hubspot'],
 			}
 		}
