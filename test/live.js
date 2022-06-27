@@ -32,12 +32,13 @@ Seneca({legacy: false})
 
     const list = await seneca.entity("provider/hubspot/company").list$()
     console.log(list)
-    const company = await seneca.entity("provider/hubspot/company").load$('<id>/type/name/city/state/description'); // customize properties you want to get from a given company e.g. "id/name/domain/description"
+    const companyId = await seneca.entity("provider/hubspot/company").load$('<id>/type/name/city/state/description'); // customize properties you want to get from a given company e.g. "id/name/domain/description"
 
     // editing description examples
-    company.properties.description = `Founded in ${company.properties.city}...`
-    await company.save$();
-    console.log('COMPANY DATA: ', company);
+    companyId.properties.description = `Founded in ${companyId.properties.city}...`
+    await companyId.save$();
+    console.log('COMPANY DATA: ', companyId);
+  
    /*
    this.act('sys:provider,get:info,provider:hubspot', async(err, reply)=>{
            console.log(reply);
