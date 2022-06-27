@@ -80,7 +80,7 @@ Set plugin options when loading with:
 ```js
 
 
-seneca.use('HubspotProvider', { name: value, ... })
+seneca.use('hubspot-provider', { name: value, ... })
 
 
 ```
