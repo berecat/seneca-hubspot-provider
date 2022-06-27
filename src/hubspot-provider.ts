@@ -31,9 +31,8 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
 				  cmd: {
 					  list: {
 						  action: async function(this: any, entize: any, msg: any) {
-							  let res, list
-							  res = (await this.shared.sdk.crm.companies.basicApi.getPage(10)).results
-							  list = res.map((data) => entize(data))
+							  let res = (await this.shared.sdk.crm.companies.basicApi.getPage(10)).results
+							  let list = res.map((data) => entize(data))
 							  return list
 						  }
 					  },
