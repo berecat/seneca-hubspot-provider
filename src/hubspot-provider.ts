@@ -40,15 +40,8 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
 						  action: async function(this: any, entize: any, msg: any) {
 							  let data = (msg.q.id.split('/'))
 							  let id = data[0]
-							  let obj = {}
 							  data = data.slice(1)
-							  try{
-								  obj = await this.shared.sdk.crm.companies.basicApi.getById(id, data.length != 0 ? data : undefined)
-							  }catch(err){
-								  if(err.code >= 400 && err.code < 500)
-									  return null
-								  throw err
-							  }
+						          let obj = await this.shared.sdk.crm.companies.basicApi.getById(id, data.length != 0 ? data : undefined)
 							  return entize(obj)
 						  }
 					  },
