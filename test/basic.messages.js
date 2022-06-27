@@ -13,7 +13,7 @@ module.exports = {
         name: 'hubspot',
         version: Pkg.version,
         sdk: {
-          name: 'hubspot-node',
+          name: 'hubspot',
           version: Pkg.dependencies['hubspot'],
         }
       },
