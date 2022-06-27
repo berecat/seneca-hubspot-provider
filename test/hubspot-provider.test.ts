@@ -46,7 +46,7 @@ describe('hubspot-provider', () => {
 				.load$(Config.company0.id);
 		expect(company0.properties.name).toEqual('MyCompany');
 
-		company0.properties.description = "NIX: " + Math.random();
+		company0.properties.description = "Value: " + Math.random();
 		let company0r = await company0.save$();
 		expect(company0r.id).toEqual(company0.id);
 		expect(company0r.properties.description).toEqual(company0.properties.description);
