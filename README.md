@@ -28,12 +28,19 @@ that they can be accessed using the Seneca entity API and messages.
 // Setup - get the key value (<SECRET>) separately from a vault or
 // environment variable.
 Seneca()
+  .use('env', {
+    // debug: true,
+    file: [__dirname + '/local-env.js;?'],
+    var: {
+      $HUBSPOT_ACCESS_TOKEN: '<SECRET>',
+    }
+  })
   .use('provider', {
     provider: {
       hubspot: {
         keys: {
           accessToken: {
-            value: ''
+            value: '$HUBSPOT_ACCESS_TOKEN'
           },
         }
       }
