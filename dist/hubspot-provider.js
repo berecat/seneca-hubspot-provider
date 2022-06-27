@@ -27,7 +27,7 @@ function HubspotProvider(options) {
                 cmd: {
                     list: {
                         action: async function (entize, msg) {
-				const limit = msg.q.limit || 10;
+				const limit = msg.q.limit || 10; // The maximum number of results to display per page
 				let res = (await this.shared.sdk.crm.companies.basicApi.getPage(limit)).results;
 				let list = res.map((data) => entize(data))
 				return list;
