@@ -21,7 +21,7 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
 	version: Pkg.dependencies['hubspot'],
       }
     }
- }
+  }
  entityBuilder(this, {
    provider: {
      name: 'hubspot'
