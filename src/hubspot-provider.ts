@@ -6,26 +6,26 @@ const Hubspot = require('@hubspot/api-client')
 type HubspotProviderOptions = {}
 
 function HubspotProvider(this: any, options : HubspotProviderOptions) {
-	const seneca:any = this
+  const seneca:any = this
 
-	const entityBuilder = this.export('provider/entityBuilder')
+  const entityBuilder = this.export('provider/entityBuilder')
 
-	seneca.message('sys:provider,provider:hubspot,get:info', get_info)
-	async function get_info(this: any, _msg: any) {
-		return {
-			ok: true,
-			name: 'hubspot',
-			version: Pkg.version,
-			sdk: {
-				name: 'hubspot',
-				version: Pkg.dependencies['hubspot'],
-			}
-		}
-	}
-	entityBuilder(this, {
-		  provider: {
-			  name: 'hubspot'
-		  },
+  seneca.message('sys:provider,provider:hubspot,get:info', get_info)
+  async function get_info(this: any, _msg: any) {
+    return {
+      ok: true,
+      name: 'hubspot',
+      version: Pkg.version,
+      sdk: {
+        name: 'hubspot',
+	version: Pkg.dependencies['hubspot'],
+      }
+    }
+ }
+ entityBuilder(this, {
+   provider: {
+     name: 'hubspot'
+   },
 		  entity: {
 			  company: {
 				  cmd: {
