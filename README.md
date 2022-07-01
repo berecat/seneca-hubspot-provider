@@ -49,7 +49,8 @@ Seneca()
   .use('hubspot-provider')
 
 let companyId = await seneca.entity('provider/hubspot/company')
-  .load$('id/type/name/city/state/description')
+  .load$('id')
+  // .load({id: 'id', fields$: ['state', 'city', 'description']}); // you can use fields$_directive to specify the properties you want to get from a company
 
 Console.log('COMPANY DATA', companyId)
 
