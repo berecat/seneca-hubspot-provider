@@ -40,10 +40,9 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
 
 	 load: {
 	   action: async function(this: any, entize: any, msg: any) {
-	     let idParts = msg.q.id.split('/')
-	     let id = idParts[0]
-	     idParts = idParts.slice(1)
-	     let obj = await this.shared.sdk.crm.companies.basicApi.getById(id, idParts.length != 0 ? idParts : undefined) // docs for the usage: https://developers.hubspot.com/docs/api/crm/companies
+	     let idParts = msg.q.fields$
+	     let id = msg.q.id
+	     let obj = await this.shared.sdk.crm.companies.basicApi.getById(id, idParts) // docs for the usage: https://developers.hubspot.com/docs/api/crm/companies
 	     return entize(obj)
 	   }
 	 },
