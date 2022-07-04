@@ -72,11 +72,7 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
       }
     }
   })
-
-
-
-
-
+	
   this.prepare(async function(this: any) {
     let accTok = await this.post('sys:provider,get:key,provider:hubspot,key:accessToken')
     if (!accTok.ok) {
