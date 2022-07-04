@@ -23,6 +23,7 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
       }
     }
   }
+  
   entityBuilder(this, {
     provider: {
       name: 'hubspot'
