@@ -81,6 +81,7 @@ function HubspotProvider(this: any, options : HubspotProviderOptions) {
     this.shared.sdk = new Hubspot.Client({accessToken: accTok.value})
   })
 
+  
   return{
     exports: {
       sdk: () => this.shared.sdk
