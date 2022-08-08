@@ -1,3 +1,3 @@
 module.exports = {
-  TRELLO_API_KEY: '<API-KEY>',
+  HUBSPOT_ACCESS_TOKEN: '<TOKEN-KEY>',
 }

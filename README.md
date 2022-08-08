@@ -1,10 +1,10 @@
-![Seneca Trello-Provider](http://senecajs.org/files/assets/seneca-logo.png)
+![Seneca Hubspot-Provider](http://senecajs.org/files/assets/seneca-logo.png)
 
-> _Seneca Trello-Provider_ is a plugin for [Seneca](http://senecajs.org)
+> _Seneca Hubspot-Provider_ is a plugin for [Seneca](http://senecajs.org)
 
 
-Provides access to the Trello API using the Seneca *provider*
-convention. Trello API entities are represented as Seneca entities so
+Provides access to the Hubspot API using the Seneca *provider*
+convention. Hubspot API entities are represented as Seneca entities so
 that they can be accessed using the Seneca entity API and messages.
 
 
@@ -28,35 +28,43 @@ that they can be accessed using the Seneca entity API and messages.
 // Setup - get the key value (<SECRET>) separately from a vault or
 // environment variable.
 Seneca()
+  .use('env', { // the 'env' plugin enables you to use environment variables in your Seneca instance.
+    // debug: true,
+    file: [__dirname + '/local-env.js;?'], // you can specify the file with your company's data such as id, etc.
+    var: {
+      $HUBSPOT_ACCESS_TOKEN: '<SECRET>',
+    }
+  })
   .use('provider', {
     provider: {
-      trello: {
+      hubspot: {
         keys: {
-          api: {
-            value: '<SECRET>'
+          accessToken: {
+            value: '$HUBSPOT_ACCESS_TOKEN'
           },
         }
       }
     }
   })
-  .use('trello-provider')
+  .use('hubspot-provider')
 
-let repo = await seneca.entity('provider/trello/repo')
-  .load$('senecajs/trello-api-test')
+let companyId = await seneca.entity('provider/hubspot/company')
+  .load$('id')
+  // .load({id: 'id', fields$: ['state', 'city', 'description']}); // you can use fields$_directive to specify the properties you want to get from a company
 
-Console.log('REPO DATA', repo)
+Console.log('COMPANY DATA', companyId)
 
-repo.description = 'New description'
-repo = await repo.save$()
+companyId.properties.description = 'New description'
+companyId = await companyId.save$()
 
-Console.log('UPDATED DATA', repo)
+Console.log('UPDATED DATA', companyId)
 
 ```
 
 ## Install
 
 ```sh
-$ npm install @seneca/trello-provider
+$ npm install @seneca/hubspot-provider
 ```
 
 
@@ -73,7 +81,7 @@ Set plugin options when loading with:
 ```js
 
 
-seneca.use('TrelloProvider', { name: value, ... })
+seneca.use('hubspot-provider', { name: value, ... })
 
 
 ```
@@ -91,9 +99,9 @@ seneca.use('TrelloProvider', { name: value, ... })
 
 ## Action Patterns
 
-* [role:entity,base:trello,cmd:load,name:repo,zone:provider](#-roleentitybasetrellocmdloadnamerepozoneprovider-)
-* [role:entity,base:trello,cmd:save,name:repo,zone:provider](#-roleentitybasetrellocmdsavenamerepozoneprovider-)
-* [sys:provider,get:info,provider:trello](#-sysprovidergetinfoprovidertrello-)
+* [role:entity,base:hubspot,cmd:load,name:company,zone:provider](#-roleentitybasehubspotcmdloadnamecompanyzoneprovider-)
+* [role:entity,base:hubspot,cmd:save,name:company,zone:provider](#-roleentitybasehubspotcmdsavenamecompanyzoneprovider-)
+* [sys:provider,get:info,provider:hubspot](#-sysprovidergetinfoproviderhubspot-)
 
 
 <!--END:action-list-->
@@ -103,21 +111,21 @@ seneca.use('TrelloProvider', { name: value, ... })
 
 ## Action Descriptions
 
-### &laquo; `role:entity,base:trello,cmd:load,name:repo,zone:provider` &raquo;
+### &laquo; `role:entity,base:hubspot,cmd:load,name:company,zone:provider` &raquo;
 
-Load Trello repository data into an entity.
-
-
-
-----------
-### &laquo; `role:entity,base:trello,cmd:save,name:repo,zone:provider` &raquo;
-
-Update Trello repository data from an entity.
+Load Hubspot company data into an entity.
 
 
 
 ----------
-### &laquo; `sys:provider,get:info,provider:trello` &raquo;
+### &laquo; `role:entity,base:hubspot,cmd:save,name:company,zone:provider` &raquo;
+
+Update Hubspot company data from an entity.
+
+
+
+----------
+### &laquo; `sys:provider,get:info,provider:hubspot` &raquo;
 
 Get information about the provider.
 

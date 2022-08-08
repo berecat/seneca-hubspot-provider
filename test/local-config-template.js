@@ -1,8 +1,6 @@
 module.exports = {
-  board0: {
-    id: '<BOARD-ID>',
-    card0: {
-      id: '<CARD-ID>',
-    }
+  company0: {
+    id: '<COMPANY-ID>',
   },
 }
+
