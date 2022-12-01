@@ -2,8 +2,6 @@
 
 A simple bot that can be added to your own Slack server.
 
-For instructions, please see [https://www.youtube.com/watch?v=AajBk59nOgw](https://www.youtube.com/watch?v=AajBk59nOgw)
-
 
 ## Info
 Slack API - Create a classic app https://api.slack.com/apps?new_classic_app=1
